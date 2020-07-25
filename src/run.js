@@ -69,12 +69,6 @@ async function getOptions (argv) {
 }
 
 async function getLatestVersion (options, tags) {
-  if (options.latestVersion) {
-    if (!semver.valid(options.latestVersion)) {
-      throw new Error('--latest-version must be a valid semver version')
-    }
-    return options.latestVersion
-  }
   if (options.package) {
     const file = options.package === true ? PACKAGE_FILE : options.package
     if (await fileExists(file) === false) {
